@@ -1,6 +1,6 @@
 package com.example.votersystem.data.model;
 
-public class usermodel {
+public class    usermodel {
     private String emailm;
     private String fullname;
     private String phone;

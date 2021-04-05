@@ -3,17 +3,14 @@ package com.example.votersystem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.votersystem.data.model.usermodel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +30,7 @@ public class register extends AppCompatActivity {
         qEmail = findViewById(R.id.Email);
         qfullName = findViewById(R.id.fullName);
         qphone = findViewById(R.id.phone);
-        qpassword = findViewById(R.id.password);
+        qpassword = findViewById(R.id.editpassword);
         qregisterBtn = findViewById(R.id.registerBtn);
         qbacklog = findViewById(R.id.backlog);
         mFirebaseAuth = FirebaseAuth.getInstance();
