@@ -78,8 +78,7 @@ Button registerbutton,loginbtn;
                                                 @Override
                                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                                     if (!task.isSuccessful()) {
-                                                       /* Toast.makeText(MainActivity.this, "Login Error ,Please Login In",
-                                                                Toast.LENGTH_LONG).show();*/
+
                                                         testtext.setText("error");
                                                     } else {
                                                         FirebaseUser mFirebaseUser = firebaseAuth.getCurrentUser();
@@ -87,7 +86,7 @@ Button registerbutton,loginbtn;
                                                             @Override
                                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                                 usermodel usermodel = snapshot.getValue(usermodel.class);
-                                                                String name = usermodel.getFullname() ;
+                                                                //String name = usermodel.getFullname() ;
                                                                 int usertype= usermodel.getType();
                                                                 testtext.setText("2");
                                                                 if(usertype==1)
