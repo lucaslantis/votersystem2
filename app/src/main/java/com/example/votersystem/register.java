@@ -51,8 +51,11 @@ public class register extends AppCompatActivity {
                 } else if (pho.isEmpty()) {
                     qphone.setError("Please provide your last name");
 
-                } else if (pwd.isEmpty()) {
+
+                    } else if (pwd.isEmpty()) {
                     qpassword.setError("Please provide password");
+                }else if (pwd.length() < 6){
+                    qpassword.setError("Password Must be >= 6 Characters");
 
                 } else if (!(email.isEmpty()) && !(pwd.isEmpty())) {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd)

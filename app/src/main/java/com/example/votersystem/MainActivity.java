@@ -22,9 +22,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class MainActivity extends AppCompatActivity {
 Button registerbutton,loginbtn;
-    EditText emailId, password;
+    EditText emailId, password,testtext;
 
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
@@ -35,8 +36,11 @@ Button registerbutton,loginbtn;
         setContentView(R.layout.activity_main);
        registerbutton = findViewById(R.id.registerbtn);
         emailId = findViewById(R.id.username);
-        password = findViewById(R.id.editpassword);
+        testtext=findViewById(R.id.debugtext);
         loginbtn=findViewById(R.id.loginbutton);
+        password = findViewById(R.id.editpassword);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
         registerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +48,7 @@ Button registerbutton,loginbtn;
                 intSignUp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intSignUp);
             }});
-                mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+        /*mAuthStateListener = new FirebaseAuth.AuthStateListener() {
                     @Override
                     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                         FirebaseUser mFirebaseUser = firebaseAuth.getCurrentUser();
@@ -54,7 +58,7 @@ Button registerbutton,loginbtn;
                         {
 
                         }
-                    }};
+                    }};*/
         loginbtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -67,6 +71,7 @@ Button registerbutton,loginbtn;
                             } else if (pwd.isEmpty()) {
                                 password.setError("Please provide password");
                                 password.requestFocus();
+                            } else if (!(email.isEmpty() && pwd.isEmpty())){
                             firebaseAuth.signInWithEmailAndPassword(email, pwd)
                                     .addOnCompleteListener(MainActivity.this,
                                             new OnCompleteListener<AuthResult>() {
@@ -75,26 +80,44 @@ Button registerbutton,loginbtn;
                                                     if (!task.isSuccessful()) {
                                                        /* Toast.makeText(MainActivity.this, "Login Error ,Please Login In",
                                                                 Toast.LENGTH_LONG).show();*/
+                                                        testtext.setText("error");
                                                     } else {
+                                                        FirebaseUser mFirebaseUser = firebaseAuth.getCurrentUser();
+                                                        firebaseDatabase.getReference().child(mFirebaseUser.getUid()).addValueEventListener(new ValueEventListener(){
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                usermodel usermodel = snapshot.getValue(usermodel.class);
+                                                                String name = usermodel.getFullname() ;
+                                                                int usertype= usermodel.getType();
+                                                                testtext.setText("2");
+                                                                if(usertype==1)
+                                                                {
+                                                                    startActivity(new Intent(getApplicationContext(),votepage.class));}
+                                                                if(usertype==2)
+                                                                {
+                                                                    startActivity(new Intent(getApplicationContext(),admin.class));
+                                                                    //   i.putExtra("name", name);
+                                                                }
+                                                        }
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
 
-                                                        moveToPage(task.getResult().getUser());
+
+                                                            }
+                                                        });
+
+                                                       // moveToPage(task.getResult().getUser());
                                                     }
                                                 }
-                                            });
-                        } else {
-                          //  Toast.makeText(MainActivity.this, "Error Occurred !", Toast.LENGTH_LONG).show();
-                        }
+                                            });}
+
 
                     }
                 });
                 };
-    @Override
-    protected void onStart() {
-        super.onStart();
-        firebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
 
-    private void moveToPage(FirebaseUser mFirebaseUser) {
+
+    /*private void moveToPage(FirebaseUser mFirebaseUser) {
 
         firebaseDatabase.getReference().child(mFirebaseUser.getUid())
                 .addValueEventListener(new ValueEventListener() {
@@ -105,21 +128,12 @@ Button registerbutton,loginbtn;
                         int usertype= usermodel.getType();
                         if(usertype==1)
                         {
-                            //Intent i = new Intent(getApplicationContext(), votepage.class);
-                            Intent i = new Intent(MainActivity.this, votepage.class);
-
-                       // CustomToast.createToast(getApplicationContext(), "Login Successful",false);
-                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                     //   i.putExtra("name", name);
-                        startActivity(i);}
+                            startActivity(new Intent(getApplicationContext(),votepage.class));}
                         if(usertype==2)
                         {
-                           // Intent i = new Intent(getApplicationContext(), admin.class);
-                            Intent i = new Intent(MainActivity.this, admin.class);
-                            // CustomToast.createToast(getApplicationContext(), "Login Successful",false);
-                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             //   i.putExtra("name", name);
-                            startActivity(i);
+
                         }
                     }
 
@@ -130,7 +144,7 @@ Button registerbutton,loginbtn;
                     }
                 });
     }
-
+*/
 
             }
 
