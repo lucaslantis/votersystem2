@@ -36,7 +36,7 @@ Button registerbutton,loginbtn;
         setContentView(R.layout.activity_main);
        registerbutton = findViewById(R.id.registerbtn);
         emailId = findViewById(R.id.username);
-        testtext=findViewById(R.id.debugtext);
+        //testtext=findViewById(R.id.debugtext);
         loginbtn=findViewById(R.id.loginbutton);
         password = findViewById(R.id.editpassword);
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -88,7 +88,7 @@ Button registerbutton,loginbtn;
                                                                 usermodel usermodel = snapshot.getValue(usermodel.class);
                                                                 //String name = usermodel.getFullname() ;
                                                                 int usertype= usermodel.getType();
-                                                                testtext.setText("2");
+                                                                //testtext.setText("2");
                                                                 if(usertype==1)
                                                                 {
                                                                     startActivity(new Intent(getApplicationContext(),votepage.class));}
