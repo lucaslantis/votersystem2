@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">votersystem</string>
+    <string name="edit_name">Edit Name</string>
+    <string name="new_election">New Election</string>
+    <string name="get_result">Get Result</string>
+    <string name="poll">poll</string>
+    <string name="option1">Option1</string>
+    <string name="option2">Option2</string>
+    <string name="vote_question">Vote Question</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="submit_poll">Submit Poll</string>
+    <string name="type_question_here">Type Question Here</string>
+    <string name="your_vote_question_is">Your Vote Question Is:</string>
 </resources>

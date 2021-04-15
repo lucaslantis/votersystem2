@@ -36,7 +36,7 @@ Button registerbutton,loginbtn;
         setContentView(R.layout.activity_main);
        registerbutton = findViewById(R.id.registerbtn);
         emailId = findViewById(R.id.username);
-        testtext=findViewById(R.id.debugtext);
+
         loginbtn=findViewById(R.id.loginbutton);
         password = findViewById(R.id.editpassword);
         firebaseDatabase = FirebaseDatabase.getInstance();
