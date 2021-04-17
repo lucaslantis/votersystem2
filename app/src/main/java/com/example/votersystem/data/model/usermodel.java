@@ -2,7 +2,7 @@ package com.example.votersystem.data.model;
 
 public class    usermodel {
     private String emailm;
-    private String fullname;
+    public String fullname;
     private String phone;
     public int vote_check;
     private int type;
