@@ -46,5 +46,3 @@ public class admin extends AppCompatActivity {
             startActivity(startview);
         }
     }
-    }
-}

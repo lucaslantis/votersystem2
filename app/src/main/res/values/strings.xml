@@ -12,4 +12,5 @@
     <string name="submit_poll">Submit Poll</string>
     <string name="type_question_here">Type Question Here</string>
     <string name="your_vote_question_is">Your Vote Question Is:</string>
+    <string name="you_selected">You selected:</string>
 </resources>

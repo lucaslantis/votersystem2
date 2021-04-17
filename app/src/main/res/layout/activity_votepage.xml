@@ -6,87 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".votepage">
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="194dp"
-        android:layout_height="712dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/sendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="sendVote"
+        android:text="Send Vote"
+        app:layout_constraintBottom_toBottomOf="@+id/selection"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/btnoption1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="VOTE"
-
-            />
-        <TextView
-            android:id="@+id/option1count"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_margin="8dp"
-            android:layout_marginTop="16dp"
-            android:textSize="60sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0"
-            />
-
-        <TextView
-            android:id="@+id/option2"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:text="nameofcandidate1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="175dp"
-        android:layout_height="726dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.35" />
 
-        <Button
-            android:id="@+id/btnoption2"
-            android:layout_width="match_parent"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selection">
+
+        <RadioButton
+            android:id="@+id/radiob1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="VOTE"
+            android:layout_alignStart="@+id/rb2"
+            android:layout_marginBottom="55dp"
+            android:layout_weight="1"
+            android:onClick="selectVote"
+            android:text="Option 1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
-            />
-
-        <TextView
-            android:id="@+id/option2count"
-            android:layout_width="match_parent"
+        <RadioButton
+            android:id="@+id/radiob2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="0"
-            android:textSize="60sp" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="43dp"
+            android:layout_weight="1"
+            android:onClick="selectVote"
+            android:text="Option 2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+    </RadioGroup>
 
-        <TextView
-            android:id="@+id/option1"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:text="nameofcandidate1" />
+    <TextView
+        android:id="@+id/selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:text="@string/you_selected"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/questiontext"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/sendVote"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selection" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

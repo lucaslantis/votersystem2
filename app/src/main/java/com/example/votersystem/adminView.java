@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -32,8 +33,8 @@ public class adminView extends AppCompatActivity {
         mdatabase1 = FirebaseDatabase.getInstance().getReference().child("Option1");
         mdatabase2 = FirebaseDatabase.getInstance().getReference().child("Option2");
         mquestionview = (TextView) findViewById(R.id.question);
-        moption1 = (RadioButton) findViewById(R.id.rbd1);
-        moption2 = (RadioButton) findViewById(R.id.rbd2);
+        moption1 = (Button) findViewById(R.id.);
+        moption2 = (Button) findViewById(R.id.);
 
         mdatabase.addValueEventListener(new ValueEventListener() {
             @Override
